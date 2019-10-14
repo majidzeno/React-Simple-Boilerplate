@@ -10,8 +10,22 @@
     "fix": "eslint --fix",
     "flow": "flow",
     "lint": "eslint src",
-    "validate": "npm run lint && prettier \"**/*.+(js|jsx|json|css|md|mdx)\" && flow",
-    "precommit": "lint-staged && npm run validate"
+    "validate": "npm run lint && prettier \"**/*.+(js|jsx|json|css|md|mdx)\" && flow"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged "
+    }
+  },
+  "lint-staged": {
+    "*.+(js|jsx)": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.+(js|jsx|json|css|md|mdx)": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "keywords": [],
   "author": "",
@@ -30,7 +44,6 @@
     "clean-webpack-plugin": "^3.0.0",
     "dotenv-webpack": "^1.7.0",
     "eslint": "^6.1.0",
-    "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.4.0",
     "eslint-loader": "^3.0.2",
     "eslint-plugin-import": "^2.18.2",
@@ -48,5 +61,17 @@
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.8.2",
     "webpack-merge": "^4.2.2"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
